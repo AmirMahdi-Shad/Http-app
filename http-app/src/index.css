@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(./img/Desktop\ -\ 1.png);
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: vazirLight, Arial, Helvetica, sans-serif;
+}
+@font-face {
+  font-family: vazirLight;
+  src: url(../fonts/vazir-font-v16.1.0/Vazir-Light.ttf);
+}
