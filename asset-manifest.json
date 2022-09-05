@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Http-app/static/css/main.82452b86.css",
+    "main.js": "/Http-app/static/js/main.2009a50c.js",
+    "static/media/Desktop - 1.png": "/Http-app/static/media/Desktop - 1.cd84e60ca40c1cd380a1.png",
+    "static/media/Vazir-Light.ttf": "/Http-app/static/media/Vazir-Light.7bbe0ee60e704d959e3c.ttf",
+    "index.html": "/Http-app/index.html",
+    "main.82452b86.css.map": "/Http-app/static/css/main.82452b86.css.map",
+    "main.2009a50c.js.map": "/Http-app/static/js/main.2009a50c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82452b86.css",
+    "static/js/main.2009a50c.js"
+  ]
+}
