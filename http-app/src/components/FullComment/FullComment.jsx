@@ -2,7 +2,13 @@ import IconComment from "../../img/icon.png";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const FullComment = ({ commentId, onDelete, comments }) => {
+const FullComment = ({
+  commentId,
+  comments,
+  setComments,
+  setError,
+  setSelectedId,
+}) => {
   const [comment, setComment] = useState(null);
 
   useEffect(() => {
@@ -14,6 +20,18 @@ const FullComment = ({ commentId, onDelete, comments }) => {
 
     if (!commentId) setComment(null);
   }, [commentId, comments]);
+
+  const deleteHandler = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/comments/${commentId}`);
+      const { data } = await axios.get("http://localhost:3001/comments");
+      setComments(data);
+      setComment(null);
+      setSelectedId(null);
+    } catch (err) {
+      setError(true);
+    }
+  };
 
   let commentDetail = (
     <div className="full-comment">
@@ -35,7 +53,7 @@ const FullComment = ({ commentId, onDelete, comments }) => {
           </div>
         </div>
         <p className="full-comment-content">{comment.body}</p>
-        <button className="full-comment--remove" onClick={onDelete}>
+        <button className="full-comment--remove" onClick={deleteHandler}>
           delete
         </button>
       </div>

@@ -1,5 +1,10 @@
+:root {
+  --glow: #f2fffd;
+}
+
 .comment-container {
-  width: 100%;
+  width: 70%;
+  padding: 0 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -14,6 +19,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow), 0 0 40px var(--glow),
+    0 0 80px var(--glow), 0 0 160px var(--glow);
 }
 .comment div {
   margin-left: 50px;
@@ -104,4 +111,19 @@
   font-weight: 500;
   padding: 16px 20px;
   border-radius: 6px;
+}
+.navbar {
+  width: 100%;
+  height: 100px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-bar--text {
+  color: #fff;
+  font-size: 40px;
+  font-family: cursive;
+  text-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow), 0 0 40px var(--glow),
+    0 0 80px var(--glow), 0 0 160px var(--glow);
 }
