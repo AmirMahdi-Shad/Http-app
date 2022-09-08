@@ -8,22 +8,28 @@ const NewComment = ({ onAddPost }) => {
   };
 
   return (
-    <form className="form-newComment" onSubmit={(e) => onAddPost(e, comment)}>
+    <form
+      className="form-newComment"
+      onSubmit={(e) => onAddPost(e, comment, setComment)}
+    >
       <h1>Add New comment</h1>
       <input
         type="text"
         placeholder="Name"
         name="name"
+        value={comment.name}
         onChange={(e) => changeHandler(e)}
       />
       <input
         type="email"
         placeholder="email"
         name="email"
+        value={comment.email}
         onChange={(e) => changeHandler(e)}
       />
       <textarea
         name="body"
+        value={comment.body}
         onChange={(e) => changeHandler(e)}
         type="text"
         placeholder="Your Comment"

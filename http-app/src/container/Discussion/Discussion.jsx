@@ -2,8 +2,9 @@ import Comment from "../../components/Comment/Comment";
 import FullComment from "../../components/FullComment/FullComment";
 import NewComment from "../../components/NewComment/NewComment";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { getAllComments } from "../../services/getAllCommentService";
+import { postComment } from "../../services/postComment";
 
 const Discussion = () => {
   const [comments, setComments] = useState(null);
@@ -13,9 +14,8 @@ const Discussion = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/comments");
+        const { data } = await getAllComments();
         setComments(data);
-        console.log(comments);
       } catch (error) {
         setError(true);
       }
@@ -27,16 +27,25 @@ const Discussion = () => {
     setSelectedId(id);
   };
 
-  const postHandler = async (e, comment) => {
+  const postHandler = async (e, comment, setComment) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/comments", {
+      await postComment({
         ...comment,
         postId: 1,
       });
-      const { data } = await axios.get("http://localhost:3001/comments");
+      const { data } = await getAllComments();
       setComments(data);
-      console.log(comments);
+      setComment({ name: "", email: "", body: "" });
+      toast.success("Comment added successfully", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (err) {
       setError(true);
     }

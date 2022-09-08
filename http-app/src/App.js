@@ -19,6 +19,7 @@ function App() {
         draggable
         pauseOnHover
         limit={1}
+        theme="dark"
       />
       <Discussion />
     </div>

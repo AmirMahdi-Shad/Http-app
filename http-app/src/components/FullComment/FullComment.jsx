@@ -1,6 +1,9 @@
 import IconComment from "../../img/icon.png";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getAllComments } from "../../services/getAllCommentService";
+import { deleteComment } from "../../services/deleteComment";
+import { getCommentById } from "../../services/getCommentByID";
+import { toast } from "react-toastify";
 
 const FullComment = ({
   commentId,
@@ -13,8 +16,7 @@ const FullComment = ({
 
   useEffect(() => {
     if (commentId)
-      axios
-        .get(`http://localhost:3001/comments/${commentId}`)
+      getCommentById(commentId)
         .then((res) => setComment(res.data))
         .catch((err) => console.log(err));
 
@@ -23,11 +25,20 @@ const FullComment = ({
 
   const deleteHandler = async () => {
     try {
-      await axios.delete(`http://localhost:3001/comments/${commentId}`);
-      const { data } = await axios.get("http://localhost:3001/comments");
+      await deleteComment(commentId);
+      const { data } = await getAllComments();
       setComments(data);
       setComment(null);
       setSelectedId(null);
+      toast.warning("Comment Deleted!", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (err) {
       setError(true);
     }
